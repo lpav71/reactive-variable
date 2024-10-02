@@ -6,7 +6,7 @@ const inputElement = document.getElementById('dynamic-input');
 const displayElement = document.getElementById('display-value');
 
 // Связываем элементы
-reactiveVariable.bind(inputElement, displayElement);
+reactiveVariable.bind(displayElement, inputElement);
 
 setValue = () => {
     reactiveVariable.value = "New Text";

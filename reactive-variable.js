@@ -25,7 +25,7 @@ class ReactiveVariable {
     }
 
     // Метод для связывания полей ввода и отображения
-    bind(inputElement = null, displayElement = null) {
+    bind(displayElement = null, inputElement = null) {
         if (displayElement) {
             this.addListener((newValue) => {
                 if (inputElement) {
