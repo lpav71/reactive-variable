@@ -25,15 +25,21 @@ class ReactiveVariable {
     }
 
     // Метод для связывания полей ввода и отображения
-    bind(inputElement, displayElement) {
-        this.addListener((newValue) => {
-            inputElement.value = newValue; // Обновление поля ввода
-            displayElement.textContent = `Значение: ${newValue}`; // Обновление отображаемого значения
-        });
+    bind(inputElement = null, displayElement = null) {
+        if (displayElement) {
+            this.addListener((newValue) => {
+                if (inputElement) {
+                    inputElement.value = newValue; // Обновление поля ввода
+                }
+                displayElement.textContent = `Значение: ${newValue}`; // Обновление отображаемого значения
+            });
+        }
 
         // Обработчик изменений для поля ввода
-        inputElement.addEventListener('input', () => {
-            this.value = inputElement.value; // Установка нового значения
-        });
+        if (inputElement) {
+            inputElement.addEventListener('input', () => {
+                this.value = inputElement.value; // Установка нового значения
+            });
+        }
     }
 }
